@@ -6,7 +6,7 @@ package org.nuomark.algorithm.linkedList;
  * @author: NuoMark
  * @create: 2020-11-16 10:26
  **/
-public class SingleNode<T> {
+public class SinglyNode<T> {
     /**
      * 存储的数据
      */
@@ -14,12 +14,16 @@ public class SingleNode<T> {
     /**
      * 下一个节点的指针
      */
-    SingleNode next=null;
+    SinglyNode next=null;
 
-    public SingleNode() {
+    public SinglyNode() {
     }
 
-    public SingleNode(T element, SingleNode next) {
+    public SinglyNode(T element) {
+        this.element = element;
+    }
+
+    public SinglyNode(T element, SinglyNode next) {
         this.element = element;
         this.next = next;
     }
@@ -32,11 +36,11 @@ public class SingleNode<T> {
         this.element = element;
     }
 
-    public SingleNode getNext() {
+    public SinglyNode getNext() {
         return next;
     }
 
-    public void setNext(SingleNode next) {
+    public void setNext(SinglyNode next) {
         this.next = next;
     }
 }
