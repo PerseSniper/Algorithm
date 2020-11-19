@@ -15,10 +15,10 @@ import java.util.Scanner;
  **/
 public class LRULinkedList<T> {
     //存储链表
-    private volatile SingleNode linked;
+    private volatile SinglyNode linked;
 
     //头节点
-    private SingleNode<T> head;
+    private SinglyNode<T> head;
 
     //默认容量大小(阀值控制：主要用于模拟内存你能存储多少数据)
     private static final Integer DEFAULT_CAPACITY = 10;
@@ -33,7 +33,7 @@ public class LRULinkedList<T> {
      * 构造初始化
      */
     public LRULinkedList() {
-        this.head = new SingleNode<>();
+        this.head = new SinglyNode<>();
         this.capacity = DEFAULT_CAPACITY;
         this.length = 0;
     }
@@ -45,7 +45,7 @@ public class LRULinkedList<T> {
     public LRULinkedList(Integer capacity) {
         this.capacity = capacity;
         this.length = 0;
-        this.head = new SingleNode<>();
+        this.head = new SinglyNode<>();
     }
 
     /**
@@ -57,7 +57,7 @@ public class LRULinkedList<T> {
         data= (T) String.valueOf(data).trim();
 
         //查询链表是否存在data数据的节点，如果存在就返回data数据节点的前一个节点
-        SingleNode preNode=findNode(data);
+        SinglyNode preNode=findNode(data);
 
         //链表存在data数据节点，删除原来位置的data数据节点，再将data数据插入到链表的头部
         if (preNode!=null){
@@ -78,9 +78,9 @@ public class LRULinkedList<T> {
      * 删除链表中存在的数据节点
      * @param preNode
      */
-    private void deleteElemOptim(SingleNode preNode){
+    private void deleteElemOptim(SinglyNode preNode){
         //获取到即将被删除的节点
-        SingleNode temp=preNode.getNext();
+        SinglyNode temp=preNode.getNext();
         //直接将 被删除的节点 前一个节点指向 被删除的节点 的下一个节点
         preNode.setNext(temp.getNext());
         //被节点设置为空
@@ -93,9 +93,9 @@ public class LRULinkedList<T> {
      * @param data
      */
     private  void intsertElemAtBegin(T data){
-        SingleNode next=head.getNext();
+        SinglyNode next=head.getNext();
         //将头部的空节点指向新插入的节点，新节点指向以前的链表
-        head.setNext(new SingleNode(data,next));
+        head.setNext(new SinglyNode(data,next));
         length++;
     }
 
@@ -104,8 +104,8 @@ public class LRULinkedList<T> {
      * @param data
      * @return 返回查找数据节点的前一个节点
      */
-    public  SingleNode findNode(T data){
-        SingleNode node=head;
+    public SinglyNode findNode(T data){
+        SinglyNode node=head;
 
         if (node.getNext()==null) return null;
 
@@ -123,14 +123,14 @@ public class LRULinkedList<T> {
      * 删除尾节点
      */
     private  void deleteElemAtEnd(){
-        SingleNode ptr=head;
+        SinglyNode ptr=head;
         //只有哨兵节点(没有存储数据)则直接返回
         if (ptr.getNext()==null) return;
 
         while (ptr.getNext().getNext()!=null){
             ptr=ptr.getNext();
         }
-        SingleNode tmp=ptr.getNext();
+        SinglyNode tmp=ptr.getNext();
         ptr.setNext(null);
         tmp=null;
         length--;
@@ -140,7 +140,7 @@ public class LRULinkedList<T> {
      * 打印链表
      */
     private void printAll(){
-        SingleNode node = head.getNext();
+        SinglyNode node = head.getNext();
         while (node != null) {
             System.out.print(node.getElement() + ",");
             node = node.getNext();
