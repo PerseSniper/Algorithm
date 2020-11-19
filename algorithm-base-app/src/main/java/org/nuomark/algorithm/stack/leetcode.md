@@ -1,0 +1,7 @@
+- [有效的括号](https://leetcode-cn.com/problems/valid-parentheses/)
+- [最小栈](https://leetcode-cn.com/problems/min-stack/)
+- [用栈实现队列](https://leetcode-cn.com/problems/implement-queue-using-stacks/)
+- [比较含退格的字符串](https://leetcode-cn.com/problems/backspace-string-compare/)
+- [基本计算器](https://leetcode-cn.com/problems/basic-calculator/)
+- [棒球比赛](https://leetcode-cn.com/problems/baseball-game/)
+- [下一个更大元素 I](https://leetcode-cn.com/problems/next-greater-element-i/)
